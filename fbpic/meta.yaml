@@ -34,6 +34,7 @@ requirements:
     - python-dateutil
     - scipy
 
+
 test:
   imports:
     - fbpic
@@ -41,12 +42,12 @@ test:
     - pytest
 
 about:
-  home: http://github.com/fbpic/fbpic
-  license: BSD-3-Clause-LBNL
-  license_family: BSD
-  license_file: 
-  summary: Spectral, quasi-3D Particle-In-Cell for CPU and GPU
+  home: 'https://github.com/fbpic/fbpic'
+  license: 'BSD 3-clause'
+  license_family: 'BSD'
+  license_file: 'LICENSE.txt'
+  summary: 'FBPIC is a Particle-In-Cell (PIC) code for relativistic plasma physics. The code can run on CPU (with multi-threading) and on GPU.'
 
 extra:
   recipe-maintainers:
-    - slacalle
+      - slacalle
