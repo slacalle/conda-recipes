@@ -1,0 +1,85 @@
+{% set name = "flatspin" %}
+{% set version = "1.0" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: 299291c8b6cd5586fe9352a1f2c8d41efc13386f6c879f95f66a950c7d5125b3
+
+build:
+  number: 0
+  entry_points:
+    - flatspin-run = flatspin.tools.run:main
+    - flatspin-run-sweep = flatspin.tools.run_sweep:main
+    - flatspin-plot-table = flatspin.tools.plot_table:main
+    - flatspin-plot = flatspin.tools.plot:main
+    - flatspin-vectors = flatspin.tools.vectors:main
+    - flatspin-vertices = flatspin.tools.vertices:main
+    - flatspin-stats = flatspin.tools.stats:main
+    - flatspin-convert = flatspin.tools.convert:main
+    - flatspin-fsck = flatspin.tools.fsck:main
+    - flatspin-inspect = flatspin.tools.inspect:main
+    - flatspin-progress = flatspin.tools.progress:main
+  script: "{{ PYTHON }} -m pip install . -vv"
+
+requirements:
+  host:
+    - joblib
+    - matplotlib
+    - numba
+    - numpy
+    - pandas >=0.23.0
+    - pillow
+    - pip
+    - pyopencl
+    - python
+    - scikit-image
+    - scipy
+    - pytables
+    - tqdm
+  run:
+    - joblib
+    - matplotlib
+    - numba
+    - numpy
+    - pandas >=0.23.0
+    - pillow
+    - pyopencl
+    - python
+    - scikit-image
+    - scipy
+    - pytables
+    - tqdm
+
+test:
+  imports:
+    - flatspin
+    - flatspin.tools
+  commands:
+    - flatspin-run --help
+    - flatspin-run-sweep --help
+    - flatspin-plot-table --help
+    - flatspin-plot --help
+    - flatspin-vectors --help
+    - flatspin-vertices --help
+    - flatspin-stats --help
+    - flatspin-convert --help
+    - flatspin-fsck --help
+    - flatspin-inspect --help
+    - flatspin-progress --help
+
+about:
+  home: "https://flatspin.gitlab.io/"
+  license: "GNU General Public v3 (GPLv3)"
+  license_family: GPL3
+  license_file: 
+  summary: "Artificial Spin Ice simulator"
+  doc_url: 
+  dev_url: 
+
+extra:
+  recipe-maintainers:
+    - slacalle
